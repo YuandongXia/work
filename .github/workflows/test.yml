@@ -15,9 +15,6 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y cmake ninja-build ccache python3 python3-tk
 
-    - name: Install Python packages
-      run: python -m pip install --user -r tools/wm/requirements.txt
-
     - name: Download and extract csky-elfabiv2-tools
       run: |
         curl -L https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1695011075810/csky-elfabiv2-tools-x86_64-minilibc-20210423.tar.gz --output csky-elfabiv2-tools.tar.gz
