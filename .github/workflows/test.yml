@@ -17,12 +17,13 @@ jobs:
 
     - name: Download and extract csky-elfabiv2-tools
       run: |
-        curl -L https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1695011075810/csky-elfabiv2-tools-x86_64-minilibc-20210423.tar.gz --output csky-elfabiv2-tools.tar.gz
-        tar -xzf csky-elfabiv2-tools.tar.gz -C /usr/local
+        curl -L https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1695011075810/csky-elfabiv2-tools-x86_64-minilibc-20210423.tar.gz --output ${GITHUB_WORKSPACE}/toolchain.tar.gz
+        tar -xzf csky-elfabiv2-tools.tar.gz -C ${GITHUB_WORKSPACE}
 
     - name: Set environment variables for Toolchain and WM IoT SDK
       run: |
-        echo "PATH=/usr/local/csky-elfabiv2-tools/bin:$PATH" >> $GITHUB_ENV
+        echo $GITHUB_WORKSPACE
+        echo "PATH=${GITHUB_WORKSPACE}/csky-elfabiv2-tools/bin:$PATH" >> $GITHUB_ENV
         echo "WM_IOT_SDK_PATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
         echo "PATH=$WM_IOT_SDK_PATH/tools/wm:$PATH" >> $GITHUB_ENV
         echo $PATH
