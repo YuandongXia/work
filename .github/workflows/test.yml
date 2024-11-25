@@ -18,7 +18,8 @@ jobs:
     - name: Download and extract csky-elfabiv2-tools
       run: |
         curl -L https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1695011075810/csky-elfabiv2-tools-x86_64-minilibc-20210423.tar.gz --output ${GITHUB_WORKSPACE}/toolchain.tar.gz
-        tar -xzf ${GITHUB_WORKSPACE}/toolchain.tar.gz
+        mkdir toolchain
+        tar -xzf ${GITHUB_WORKSPACE}/toolchain.tar.gz -C toolchain
         ls -al
         ls -al ./toolchain
 
