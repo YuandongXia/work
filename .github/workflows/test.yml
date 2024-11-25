@@ -30,3 +30,4 @@ jobs:
         echo $WM_IOT_SDK_PATH
         python --version
         cmake --version
+        ld --version
