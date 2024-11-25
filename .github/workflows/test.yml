@@ -31,6 +31,6 @@ jobs:
         echo ${{ github.workspace }}
         echo "Current PATH: ${{ env.PATH }}"
         echo "WM_IOT_SDK_PATH: ${{ env.WM_IOT_SDK_PATH }}"
-        python --version
+        python3 --version
         cmake --version
         csky-elfabiv2-gcc --version
