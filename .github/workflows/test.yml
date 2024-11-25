@@ -1,5 +1,9 @@
 name: Build and Test
 
+env:
+  PATH: ${{ github.workspace }}/toolchain/csky-elfabiv2-tools/bin:${{ github.workspace }}/tools/wm:${{ env.PATH }}
+  WM_IOT_SDK_PATH: ${{ github.workspace }}
+
 on: [push, pull_request]
 
 jobs:
@@ -24,13 +28,10 @@ jobs:
         ls -al ./toolchain
 
     - name: Set environment variables for Toolchain and WM IoT SDK
-      env:
-        PATH: ${{ github.workspace }}/toolchain/csky-elfabiv2-tools/bin:${{ github.workspace }}/tools/wm:${{ env.PATH }}
-        WM_IOT_SDK_PATH: ${{ github.workspace }}
       run: |
         echo ${{ github.workspace }}
         echo "Current PATH: ${{ env.PATH }}"
         echo "WM_IOT_SDK_PATH: ${{ env.WM_IOT_SDK_PATH }}"
-        python3 --version
+        python --version
         cmake --version
         csky-elfabiv2-gcc --version
