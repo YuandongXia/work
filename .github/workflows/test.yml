@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
-      TOOLCHAIN_PATH: ${{ github.workspace }}/toolchain/csky-elfabiv2-tools/bin
+      TOOLCHAIN_PATH: ${{ github.workspace }}/csky-elfabiv2-tools/bin
       WM_TOOLS_PATH: ${{ github.workspace }}/tools/wm
       WM_IOT_SDK_PATH: ${{ github.workspace }}
 
@@ -22,11 +22,11 @@ jobs:
 
     - name: Download and extract csky-elfabiv2-tools
       run: |
-        curl -L https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1695011075810/csky-elfabiv2-tools-x86_64-minilibc-20210423.tar.gz --output ${GITHUB_WORKSPACE}/toolchain.tar.gz
+        curl -L https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1695011075810/csky-elfabiv2-tools-x86_64-minilibc-20210423.tar.gz --output ${GITHUB_WORKSPACE}/csky-elfabiv2-tools.tar.gz
         mkdir toolchain
         tar -xzf ${{ github.workspace }}/toolchain.tar.gz -C toolchain
-        ls -al ./toolchain
-        ls -al ./toolchain/csky-elfabiv2-tools/bin
+        ls -al ./csky-elfabiv2-tools
+        ls -al ./csky-elfabiv2-tools/bin
 
     - name: Check environment setup
       run: |
