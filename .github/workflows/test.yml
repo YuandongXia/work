@@ -19,6 +19,8 @@ jobs:
       run: |
         curl -L https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1695011075810/csky-elfabiv2-tools-x86_64-minilibc-20210423.tar.gz --output ${GITHUB_WORKSPACE}/toolchain.tar.gz
         tar -xzf ${GITHUB_WORKSPACE}/toolchain.tar.gz -C ${GITHUB_WORKSPACE}
+        ls -al
+        ls -al ./toolchain
 
     - name: Set environment variables for Toolchain and WM IoT SDK
       run: |
@@ -26,8 +28,8 @@ jobs:
         echo "PATH=${GITHUB_WORKSPACE}/csky-elfabiv2-tools/bin:$PATH" >> $GITHUB_ENV
         echo "WM_IOT_SDK_PATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
         echo "PATH=$WM_IOT_SDK_PATH/tools/wm:$PATH" >> $GITHUB_ENV
-        echo $PATH
-        echo $WM_IOT_SDK_PATH
+        echo "Current PATH: $PATH"
+        echo "WM_IOT_SDK_PATH: $WM_IOT_SDK_PATH"
         python --version
         cmake --version
         csky-elfabiv2-gcc --version
