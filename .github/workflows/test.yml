@@ -19,19 +19,19 @@ jobs:
       run: |
         curl -L https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1695011075810/csky-elfabiv2-tools-x86_64-minilibc-20210423.tar.gz --output ${GITHUB_WORKSPACE}/toolchain.tar.gz
         mkdir toolchain
-        tar -xzf ${GITHUB_WORKSPACE}/toolchain.tar.gz -C toolchain
+        tar -xzf ${{ github.workspace }}/toolchain.tar.gz -C toolchain
         ls -al
         ls -al ./toolchain
 
     - name: Set environment variables for Toolchain and WM IoT SDK
       run: |
-        echo $GITHUB_WORKSPACE
-        echo "PATH=${GITHUB_WORKSPACE}/toolchain/csky-elfabiv2-tools/bin:$PATH" >> $GITHUB_ENV
-        WM_IOT_SDK_PATH=$GITHUB_WORKSPACE
-        echo "WM_IOT_SDK_PATH=$WM_IOT_SDK_PATH" >> $GITHUB_ENV
-        echo "PATH=$WM_IOT_SDK_PATH/tools/wm:$PATH" >> $GITHUB_ENV
-        echo "Current PATH: $PATH"
-        echo "WM_IOT_SDK_PATH: $WM_IOT_SDK_PATH"
-        python --version
-        cmake --version
-        csky-elfabiv2-gcc --version
+        env:
+          PATH: ${{ github.workspace }}/toolchain/csky-elfabiv2-tools/bin:${{ github.workspace }}/tools/wm:${{ env.PATH }}
+          WM_IOT_SDK_PATH: ${{ github.workspace }}
+        run: |
+          echo ${{ github.workspace }}
+          echo "Current PATH: ${{ env.PATH }}"
+          echo "WM_IOT_SDK_PATH: ${{ env.WM_IOT_SDK_PATH }}"
+          python --version
+          cmake --version
+          csky-elfabiv2-gcc --version
