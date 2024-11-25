@@ -27,7 +27,8 @@ jobs:
       run: |
         echo $GITHUB_WORKSPACE
         echo "PATH=${GITHUB_WORKSPACE}/toolchain/csky-elfabiv2-tools/bin:$PATH" >> $GITHUB_ENV
-        echo "WM_IOT_SDK_PATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
+        WM_IOT_SDK_PATH=$GITHUB_WORKSPACE
+        echo "WM_IOT_SDK_PATH=$WM_IOT_SDK_PATH" >> $GITHUB_ENV
         echo "PATH=$WM_IOT_SDK_PATH/tools/wm:$PATH" >> $GITHUB_ENV
         echo "Current PATH: $PATH"
         echo "WM_IOT_SDK_PATH: $WM_IOT_SDK_PATH"
