@@ -30,10 +30,11 @@ jobs:
 
     - name: Check environment setup
       run: |
-        echo "Current PATH: $PATH" 
+        echo "Current PATH before update: $PATH"
+        export PATH=$TOOLCHAIN_PATH:$WM_TOOLS_PATH:$PATH
         echo "PATH=$TOOLCHAIN_PATH:$WM_TOOLS_PATH:$PATH" >> $GITHUB_ENV
         echo "Working directory: ${{ github.workspace }}"
-        echo "Current PATH: $PATH" 
+        echo "Current PATH after update: $PATH"
         echo "SDK path: $WM_IOT_SDK_PATH"
         python3 --version
         cmake --version
