@@ -30,4 +30,4 @@ jobs:
         echo $WM_IOT_SDK_PATH
         python --version
         cmake --version
-        ld --version
+        csky-elfabiv2-gcc --version
