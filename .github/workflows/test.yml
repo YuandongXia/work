@@ -30,6 +30,7 @@ jobs:
 
     - name: Check environment setup
       run: |
+        echo "Current PATH: $PATH" 
         echo "PATH=$TOOLCHAIN_PATH:$WM_TOOLS_PATH:$PATH" >> $GITHUB_ENV
         echo "Working directory: ${{ github.workspace }}"
         echo "Current PATH: $PATH" 
