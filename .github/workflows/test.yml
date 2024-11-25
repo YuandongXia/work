@@ -26,7 +26,7 @@ jobs:
         mkdir toolchain
         tar -xzf ${{ github.workspace }}/toolchain.tar.gz -C toolchain
         ls -al
-        ls -al ./toolchain
+        ls -al ./toolchain/csky-elfabiv2-tools/bin
 
     - name: Check environment setup
       run: |
